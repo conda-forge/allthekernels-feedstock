@@ -1,5 +1,5 @@
 {% set name = "allthekernels" %}
-{% set version = "1.0.2" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 492d463e3ff7d33f082591dec4a68d59e104be5b33376bced6f89bfbe32eae95
+  sha256: 45409bce377b8458c928f4e845b602126726fadb16ca6e7f9dbf1bc82579e56e
 
 build:
   noarch: python
