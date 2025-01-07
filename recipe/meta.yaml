@@ -6,28 +6,30 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 9f91aecdf00e8474920b47fa3658590c9c66bc7783bfed05af94f3cfbcdf6940 
 
 build:
   noarch: python
-  number: 0
+  number: 1
   # Using the --no-binary option to prevent pip to build the wheel, so that
   # the full path to python is included in the kernelspec.
   script: "{{ PYTHON }} -m pip install . -vv --no-binary :all:"
 
 requirements:
   host:
-    - python >=3.5
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.5
+    - python >={{ python_min }}
     - ipykernel >=4.3
     - jupyter_client >=5
     - pyzmq >=15.2
     - tornado >=4
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - allthekernels
 
